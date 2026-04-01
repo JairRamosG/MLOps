@@ -1,0 +1,14 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: servicio-proyecto-vision-yolo
+spec:
+  template:
+    spec:
+      containers:
+        - image: us-central1-docker.pkg.dev/mlops-14-project-deploy-fast/repositorio-mlops-inofuente/imagen-v6-mlops-inofuente:latest
+          ports:
+            - containerPort: 4000
+          resources:
+            limits:
+              memory: 1Gi

@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(/opt/anaconda3/envs/MLOps-Introduccion-Yolo/bin/pip install:*)",
+      "Bash(/opt/anaconda3/envs/MLOps-Introduccion-Yolo/bin/pip show:*)",
+      "Bash(/opt/anaconda3/envs/MLOps-Introduccion-Yolo/bin/pip uninstall:*)",
+      "Bash(/opt/anaconda3/envs/MLOps-Introduccion-Yolo/bin/python -c \"import os; os.environ['TF_USE_LEGACY_KERAS']='1'; from tensorflow.keras.utils import get_file; print\\('tensorflow.keras funciona OK'\\)\")",
+      "Bash(/opt/anaconda3/envs/MLOps-Introduccion-Yolo/bin/python -c \"import os; os.environ['TF_USE_LEGACY_KERAS']='1'; import cvlib as cv; print\\('cvlib importado OK'\\)\")",
+      "Bash(gh api:*)",
+      "WebFetch(domain:api.github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}

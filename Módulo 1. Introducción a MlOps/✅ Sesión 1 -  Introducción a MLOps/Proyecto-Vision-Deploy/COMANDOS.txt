@@ -1,0 +1,14 @@
+## Paso 0: Vinculacion
+gcloud init
+
+## Paso 1: Creacion del repositorio
+gcloud artifacts repositories create repositorio-mlops-inofuente --repository-format docker --project mlops-14-project-deploy-fast --location us-central1
+
+## Paso 2: Crear la imagen y subir al repositorio
+gcloud builds submit --config=cloudbuild.yaml --project mlops-14-project-deploy-fast
+
+## Paso 3: Despliegue de la imagen
+gcloud run services replace service.yaml --region us-central1 --project mlops-14-project-deploy-fast
+
+## Paso 4: (OPCIONAL) Dar permisos de acceso publico (una sola vez)
+gcloud run services set-iam-policy servicio-proyecto-vision-yolo gcr-service-policy.yaml --region us-central1 --project mlops-14-project-deploy-fast
