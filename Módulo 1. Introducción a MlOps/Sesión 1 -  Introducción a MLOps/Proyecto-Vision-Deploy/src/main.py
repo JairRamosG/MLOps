@@ -10,8 +10,9 @@ from cvlib.object_detection import draw_bbox
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from fastapi.responses import StreamingResponse
 
-app = FastAPI(title='Deploying un Modelo ML con FastAPI')
+from magnum import Magnum
 
+app = FastAPI(title='Deploying un Modelo ML con FastAPI')
 
 class Model(str, Enum):
     yolov3tiny = "yolov3-tiny"
@@ -51,6 +52,7 @@ def prediction(model: Model, file: UploadFile = File(...)):
         media_type="image/jpeg"
     )
 
+handler = Magnum(app)
 
 if __name__ == "__main__":
     import uvicorn
