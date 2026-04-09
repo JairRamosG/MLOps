@@ -1,5 +1,12 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'Dockerfile.prod', '-t', 'us-central1-docker.pkg.dev/mlops-14-project-deploy-fast/repositorio-mlops-inofuente/imagen-v6-mlops-inofuente:latest', '.']
+    args: ['build', '-f', 'Dockerfile.prod', '-t', 'northamerica-south1-docker.pkg.dev/mlops-yolo-jair-ramos-proyecto/repositorio-yolo-mlops-jair-ramos/imagen-yolo-jair-ramos:latest', '.']
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/mlops-14-project-deploy-fast/repositorio-mlops-inofuente/imagen-v6-mlops-inofuente:latest']
+    args: ['push', 'northamerica-south1-docker.pkg.dev/mlops-yolo-jair-ramos-proyecto/repositorio-yolo-mlops-jair-ramos/imagen-yolo-jair-ramos:latest']
+
+# ubicación -> proyecto -> repositorio -> imagen
+
+# ubicacion: yo la elegí
+# proyecto: es el que debe ser unico
+# repositorio: el que se hace en Artifact Registry
+# imagen: todo se hace para ser equivalente a Dockerhub, pero con el repositorio de Google Cloud

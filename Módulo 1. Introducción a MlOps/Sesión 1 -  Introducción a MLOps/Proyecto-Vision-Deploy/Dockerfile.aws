@@ -1,8 +1,25 @@
-FROM public.ecr.aws/lambda/python:3.10
+# Imagen base oficial de Lambda con Python 3.11
+FROM public.ecr.aws/lambda/python:3.11
 
+# Variables de entorno
+ENV PYTHONUNBUFFERED=True
+
+# Actualizar pip
+RUN pip install --upgrade pip
+
+# Instalar numpy desde wheel (evita compilación)
+RUN pip install --no-cache-dir numpy==1.26.4
+
+# Copiar requirements.txt y eliminar numpy (ya instalado)
 COPY requirements.txt .
-RUN pip install -r requirements.txt
+RUN sed -i '/^numpy/d' requirements.txt
 
-COPY . ${LAMBDA_TASK_ROOT}
+# Instalar el resto de dependencias (TensorFlow 2.15.0, etc.)
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["main.handler"]
+# Copiar archivos de configuración y pesos de YOLO (si los usas directamente)
+COPY yolov3-tiny.cfg yolov3-tiny.weights coco.names ./
+
+COPY src/ ${LAMBDA_TASK_ROOT}/src/
+
+CMD ["src.main.handler"]

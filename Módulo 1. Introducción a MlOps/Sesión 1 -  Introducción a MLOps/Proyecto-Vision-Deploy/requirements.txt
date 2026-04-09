@@ -9,4 +9,3 @@ uvicorn==0.23.2
 fastapi==0.103.2
 python-multipart==0.0.6
 nest-asyncio==1.5.8
-magnum == 22.0.0
